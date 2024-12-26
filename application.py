@@ -94,3 +94,23 @@ if text_input:
 
     # 결과 출력
     st.write(f"교정된 문장: {corrected_text}")
+
+
+from konlpy.tag import Okt
+
+# Streamlit 앱 설정
+st.title("KoNLPy를 활용한 형태소 분석")
+
+# 사용자 입력 받기
+text = st.text_area("분석할 문장을 입력하세요", height=200)
+
+# Okt 객체 생성
+okt = Okt()
+
+# 형태소 분석
+morphs = okt.pos(text)
+
+# 형태소 분석 결과 출력
+st.write("형태소 분석 결과:")
+for word, tag in morphs:
+    st.write(f"{word}: {tag}")
