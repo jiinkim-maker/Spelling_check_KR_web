@@ -96,25 +96,24 @@ if text_input:
     st.write(f"교정된 문장: {corrected_text}")
 
 
-# 모델 로드 (위에서 사용한 코드와 동일)
+# Model load (same as the previous code)
 model_name = "monologg/kobert"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForMaskedLM.from_pretrained(model_name)
 
 def tokenize_korean(text):
-    # 위에서 정의한 tokenize_korean 함수와 동일
+    # Same as the previous `tokenize_korean` function
 
-# Streamlit 앱 시작
+# Streamlit app starts here (notice the indentation increase)
 st.title("HanBert 형태소 분석기")
 
-# 사용자 입력 받기
+# User input
 text_input = st.text_area("분석할 문장을 입력하세요")
 
-# 분석 버튼 클릭 시
+# Analyze button clicked
 if st.button("분석"):
     if text_input:
         tokens = tokenize_korean(text_input)
         st.write("분석 결과:", tokens)
     else:
         st.warning("분석할 문장을 입력해주세요.")
-
