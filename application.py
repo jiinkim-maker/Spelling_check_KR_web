@@ -52,7 +52,11 @@ st.write("아래에 문장을 입력하고, 맞춤법 교정을 확인하세요.
 # 사용자로부터 문장 입력 받기
 text_input = st.text_input("검사할 문장을 입력하세요:")
 
-st.sidebar.button("문서 전체 맞춤법 검사 요청")
+# 버튼 생성
+st.sidebar.markdown("""
+<button>문서 전체 맞춤법 검사 요청</button>
+""", unsafe_allow_html=True)
+
 # 문서 업로드
 uploaded_file = st.sidebar.file_uploader("문서를 업로드하세요", type=["docx", "pdf", "txt"])
 
@@ -75,11 +79,6 @@ button_style = """
 </style>
 """
 st.markdown(button_style, unsafe_allow_html=True)
-
-# 버튼 생성
-st.sidebar.markdown("""
-<button>문서 전체 맞춤법 검사 요청</button>
-""", unsafe_allow_html=True)
 
 # 버튼 클릭 시 맞춤법 검사
 if uploaded_file is not None:
