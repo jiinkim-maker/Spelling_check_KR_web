@@ -40,7 +40,7 @@ model_option = st.sidebar.selectbox("사용할 맞춤법 교정 AI 모델 선택
 st.header(f"김지후님, 반갑습니다.")  # 사용자 이름으로 인사
 
 # 4. 사용자 이미지 업로드 (이미지 파일 경로)
-image = Image.open("your_image_path.jpg")  # 사용자의 이미지를 경로로 불러옵니다.
+image = Image.open("C:\\Users\\rlawl\\OneDrive\\사진\\cr.jpg")  # 백슬래시 두 번 사용
 st.image(image, width=100)  # 이미지 크기 설정
 
 # 설명
