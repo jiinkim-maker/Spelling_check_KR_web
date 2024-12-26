@@ -124,7 +124,7 @@ def tokenize_korean(text):
 
 
 # Streamlit 애플리케이션
-st.title("한글 토큰화 도구")
+st.header("한국어 토큰화/형태소 분석기")
 
 text_input = st.text_area("분석할 문장을 입력해주세요.")  # 입력 필드에 미리 메시지 설정
 
