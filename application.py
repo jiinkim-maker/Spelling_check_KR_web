@@ -64,7 +64,7 @@ button_style = """
 .stButton > button {
     font-family: 'Arial', sans-serif;
     background-color: #B2D7EE; /* 파스텔톤 하늘색 */
-    color: white;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
