@@ -1,1 +1,1 @@
-# Spelling_check_KR_web
+# KOREANSPELLCHECK
