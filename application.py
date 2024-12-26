@@ -94,29 +94,3 @@ if text_input:
 
     # 결과 출력
     st.write(f"교정된 문장: {corrected_text}")
-
-
-# 모델 이름 변경 가능
-model_name = "monologg/kobert"
-
-# 토크나이저와 모델 로드
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForMaskedLM.from_pretrained(model_name)
-
-# 분석 함수
-def tokenize_korean(text):
-    inputs = tokenizer.encode_plus(text, return_tensors='pt')
-    with torch.no_grad():
-        outputs = model(**inputs)
-        predicted_tokens = tokenizer.convert_ids_to_tokens(torch.argmax(outputs.logits, dim=-1)[0])
-    return predicted_tokens
-
-# Streamlit 앱
-st.title("한글 형태소 분석기")
-text_input = st.text_area("분석할 문장을 입력하세요")
-if st.button("분석"):
-    if text_input:
-        tokens = tokenize_korean(text_input)
-        st.write("분석 결과:", tokens)
-    else:
-        st.warning("분석할 문장을 입력하세요.")
