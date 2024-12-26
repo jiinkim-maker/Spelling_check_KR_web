@@ -24,6 +24,9 @@ def correct_spelling_with_kobart(text):
 
 # 사이드바 설정
 st.sidebar.title("김지후님, 반갑습니다.")
+# 4. 사용자 이미지 업로드 (이미지 파일 경로)
+image = Image.open("talk.gif")  # 백슬래시 두 번 사용
+st.image(image, width=100)  # 이미지 크기 설정
 
 # 1. 아카이브 버튼 (헷갈리는 맞춤법 저장)
 if st.sidebar.button("헷갈리는 맞춤법 아카이브"):
@@ -40,8 +43,8 @@ model_option = st.sidebar.selectbox("사용할 맞춤법 교정 AI 모델 선택
 st.header(f"한글 맞춤법 검사기")  # 사용자 이름으로 인사
 
 # 4. 사용자 이미지 업로드 (이미지 파일 경로)
-image = Image.open("talk.gif")  # 백슬래시 두 번 사용
-st.image(image, width=100)  # 이미지 크기 설정
+#image = Image.open("talk.gif")  # 백슬래시 두 번 사용
+#st.image(image, width=100)  # 이미지 크기 설정
 
 # 설명
 st.write("아래에 문장을 입력하고, 맞춤법 교정을 확인하세요.")
