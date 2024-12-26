@@ -54,12 +54,13 @@ text_input = st.text_input("검사할 문장을 입력하세요:")
 
 # 문서 업로드
 uploaded_file = st.sidebar.file_uploader("문서 전체 맞춤법 검사 요청 : 문서를 업로드하세요", type=["docx", "pdf", "txt"])
+
 # 버튼 스타일 적용
 button_style = """
 <style>
 .stButton > button {
     font-family: 'Arial', sans-serif;
-    background-color: #4CAF50; /* 버튼 배경색 */
+    background-color: #B2D7EE; /* 파스텔톤 하늘색 */
     color: white;
     padding: 15px 32px;
     text-align: center;
