@@ -96,11 +96,14 @@ if text_input:
     st.write(f"교정된 문장: {corrected_text}")
 
 
-# 모델 로드 (Hugging Face 허브에서 제공하는 모델 이름으로 변경 가능)
+# 모델 이름 변경 가능
 model_name = "monologg/kobert"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForMaskedLM.from_pretrained(model_name).to("cuda" if torch.cuda.is_available() else "cpu")
 
+# 토크나이저와 모델 로드
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForMaskedLM.from_pretrained(model_name)
+
+# 분석 함수
 def tokenize_korean(text):
     inputs = tokenizer.encode_plus(text, return_tensors='pt')
     with torch.no_grad():
@@ -108,20 +111,12 @@ def tokenize_korean(text):
         predicted_tokens = tokenizer.convert_ids_to_tokens(torch.argmax(outputs.logits, dim=-1)[0])
     return predicted_tokens
 
-# Streamlit 앱 시작
-st.title("HanBert 형태소 분석기")
-
-# 사용자 입력 받기
+# Streamlit 앱
+st.title("한글 형태소 분석기")
 text_input = st.text_area("분석할 문장을 입력하세요")
-
-# 분석 버튼 클릭 시
 if st.button("분석"):
     if text_input:
-        try:
-            tokens = tokenize_korean(text_input)
-            st.write("분석 결과:", tokens)
-        except Exception as e:
-            st.error(f"오류 발생: {e}")
+        tokens = tokenize_korean(text_input)
+        st.write("분석 결과:", tokens)
     else:
-        st.warning("분석할 문장을 입력해주세요.")
-
+        st.warning("분석할 문장을 입력하세요.")
