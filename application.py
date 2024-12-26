@@ -94,3 +94,38 @@ if text_input:
 
     # 결과 출력
     st.write(f"교정된 문장: {corrected_text}")
+
+
+
+
+import nltk
+from nltk.data import find
+import streamlit as st
+
+nltk.download('punkt')
+
+def tokenize_korean(text):
+    """
+    한국어 텍스트를 토큰(단어) 단위로 분리하는 함수
+
+    Args:
+        text (str): 분석할 한국어 텍스트
+
+    Returns:
+        list: 토큰화된 단어 리스트
+    """
+    return nltk.word_tokenize(text)
+
+# Streamlit 애플리케이션 시작
+st.title("한글 토큰화 도구")
+
+# 사용자 입력 받기
+text_input = st.text_area("분석할 문장을 입력하세요")
+
+# 분석 버튼 클릭 시
+if st.button("분석"):
+    if text_input:
+        tokens = tokenize_korean(text_input)
+        st.write("분석 결과:", tokens)
+    else:
+        st.warning("분석할 문장을 입력해주세요.")
