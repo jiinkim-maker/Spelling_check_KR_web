@@ -54,6 +54,30 @@ text_input = st.text_input("검사할 문장을 입력하세요:")
 
 # 문서 업로드
 uploaded_file = st.sidebar.file_uploader("문서 전체 맞춤법 검사 요청 : 문서를 업로드하세요", type=["docx", "pdf", "txt"])
+# 버튼 스타일 적용
+button_style = """
+<style>
+.stButton > button {
+    font-family: 'Arial', sans-serif;
+    background-color: #4CAF50; /* 버튼 배경색 */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+</style>
+"""
+st.markdown(button_style, unsafe_allow_html=True)
+
+# 버튼 생성
+st.sidebar.markdown("""
+<button>문서 전체 맞춤법 검사 요청</button>
+""", unsafe_allow_html=True)
 
 # 버튼 클릭 시 맞춤법 검사
 if uploaded_file is not None:
