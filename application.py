@@ -109,14 +109,25 @@ def tokenize_korean(text):
     """
     return nltk.word_tokenize(text)
 
+
+# Streamlit 애플리케이션
+
+#text_input = st.text_area("분석할 문장을 입력하세요")
+
+#if st.button("분석"):
+#    if text_input:
+#        tokens = tokenize_korean(text_input)
+#        st.write("분석 결과:", tokens)
+#    else:
+#        st.warning("분석할 문장을 입력해주세요.")
+
+
+
 # Streamlit 애플리케이션
 st.title("한글 토큰화 도구")
 
-text_input = st.text_area("분석할 문장을 입력하세요")
+text_input = st.text_area("분석 제공 대상이 아닙니다.")  # 입력 필드에 미리 메시지 설정
 
 if st.button("분석"):
-    if text_input:
-        tokens = tokenize_korean(text_input)
-        st.write("분석 결과:", tokens)
-    else:
-        st.warning("분석할 문장을 입력해주세요.")
+    # 토큰화 과정 대신 메시지 출력
+    st.write("분석 제공 대상이 아닙니다.")
