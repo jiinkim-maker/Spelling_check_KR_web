@@ -1,5 +1,5 @@
 import streamlit as st
-from transformers import BartForConditionalGeneration, AutoTokenizer
+from transformers import BartForConditionalGeneration, AutoTokenizer, AutoModelForMaskedLM
 from PIL import Image
 
 
@@ -96,21 +96,25 @@ if text_input:
     st.write(f"교정된 문장: {corrected_text}")
 
 
-from konlpy.tag import Okt
+# 모델 로드 (위에서 사용한 코드와 동일)
+model_name = "monologg/kobert"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForMaskedLM.from_pretrained(model_name)
 
-# Streamlit 앱 설정
-st.title("KoNLPy를 활용한 형태소 분석")
+def tokenize_korean(text):
+    # 위에서 정의한 tokenize_korean 함수와 동일
+
+# Streamlit 앱 시작
+st.title("HanBert 형태소 분석기")
 
 # 사용자 입력 받기
-text = st.text_area("분석할 문장을 입력하세요", height=200)
+text_input = st.text_area("분석할 문장을 입력하세요")
 
-# Okt 객체 생성
-okt = Okt()
+# 분석 버튼 클릭 시
+if st.button("분석"):
+    if text_input:
+        tokens = tokenize_korean(text_input)
+        st.write("분석 결과:", tokens)
+    else:
+        st.warning("분석할 문장을 입력해주세요.")
 
-# 형태소 분석
-morphs = okt.pos(text)
-
-# 형태소 분석 결과 출력
-st.write("형태소 분석 결과:")
-for word, tag in morphs:
-    st.write(f"{word}: {tag}")
